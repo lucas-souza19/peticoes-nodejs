@@ -1,0 +1,33 @@
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card {
+    display: flex;
+    flex-direction: column;
+}
+img{
+    width: 40%;
+}
+.buttons{
+    display: flex;
+    gap: 1rem;
+}
+.buttons a{
+    width: 50px;
+    height: 30px;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px;
+    background: grey;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    transition: all .3s ease;
+}
+.buttons a:hover{
+    background: lightgrey;
+}
