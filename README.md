@@ -29,32 +29,32 @@ O projeto é uma aplicação em NodeJS para realizar um CRUD completo de petiç�
 
 Rota: localhost:3000/api/authUser
 Para autenticar o usuário deve-se utilizar o método GET, e passar os PARAMS username e password. Exemplo:
-<img src="../peticoesMongoDB/public/assets/authUser.png" />
+<img src="/public/assets/authUser.png" />
 
 
 Rota: localhost:3000/api/peticoes
 Para visualizar as petições deve-se estar autenticado e utilizar o método GET. Exemplo:
-<img src="../peticoesMongoDB/public/assets/allPetitions.png" />
+<img src="/public/assets/allPetitions.png" />
 
 Rota: localhost:3000/api/peticao
 Para visualizar as uma petição específica deve-se estar autenticado e utilizar o método GET, passando o _id como PARAM (_id para teste: 636993580940c23c6f69d2dd). Exemplo:
-<img src="../public/assets/getPeticao.png" />
+<img src="/public/assets/getPeticao.png" />
 
 Rota: localhost:3000/api/incluir/peticao
 Para incluir uma petição deve-se estar autenticado e utilizar o método POST, passando os seguintes campos como PARAM -> titulo, descricao e meta (os outros campos são preenchidos com os dados do usuario logado). Exemplo:
-<img src="../public/assets/addPeticao.png" />
+<img src="/public/assets/addPeticao.png" />
 
 Rota: localhost:3000/api/atualizar/peticao
 Para atualizar uma petição deve-se estar autenticado e utilizar o método GET, passando os seguintes campos como PARAM -> _id, titulo, descricao e meta. Exemplo:
-<img src="../public/assets/updatePeticao.png" />
+<img src="/public/assets/updatePeticao.png" />
 
 Rota: localhost:3000/api/deletar/peticao
 Para deletar uma petição deve-se estar autenticado, ser o criador da petição e utilizar o método GET, passando o _id da petição como PARAM. Exemplo:
-<img src="../public/assets/deletarPeticao.png" />
+<img src="/public/assets/deletarPeticao.png" />
 
 Rota: localhost:3000/api/assinar/peticao
 Para assinar uma petição deve-se estar autenticado, e utilizar o método GET, passando o id_peticao da petição como PARAM (lembrando que não é possível assinar a mesma petição duas vezes). Exemplo:
-<img src="../public/assets/assinarPeticao.png" />
+<img src="/public/assets/assinarPeticao.png" />
 
 ## ✍🏾 Autor
 
