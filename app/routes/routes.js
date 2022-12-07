@@ -9,7 +9,7 @@ module.exports = {
         app.get('/api/peticoes', PeticoesController.getPeticoes);
     },
     addPeticao: (app) => {
-        app.post('/api/incluir/peticoes', PeticoesController.addPeticao);
+        app.post('/api/incluir/peticao', PeticoesController.addPeticao);
     },
     authUser: (app) => {
         app.get('/api/authUser', AuthController.getUser);

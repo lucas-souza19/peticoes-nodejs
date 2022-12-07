@@ -107,6 +107,8 @@ module.exports = class Peticoes {
     if (userStorage.token !== undefined && userStorage.token !== '') {
       req.session.logado = true;
       req.session.username = userStorage.username;
+      req.query.criador = userStorage.username;
+      req.query.qtd_assinaturas = 0;
     }
 
     if (!req.session.logado) return res.status(500).json({
@@ -114,9 +116,9 @@ module.exports = class Peticoes {
     });
 
     let acesso_negado = false;
-    
+
     const peticoes = await PeticoesModel.getPeticoes();
-    
+
     let validar_peticao = peticoes.filter((peticao) => peticao._id == req.query._id && peticao.criador == req.session.username);
 
     if (validar_peticao.length == 0) {
@@ -128,6 +130,7 @@ module.exports = class Peticoes {
       res.status(500).json({
         error: "Acesso negado: Petição não cadastrada por esse usuário"
       });
+      return
 
     } else {
 
@@ -135,10 +138,12 @@ module.exports = class Peticoes {
 
         let getPeticao = await PeticoesModel.getPeticao(req.query._id);
 
-        const peticao = await PeticoesModel.updatePeticao(req.query._id, getPeticao);
+        let peticaoUpdate = {titulo: req.query.titulo, meta: req.query.meta, descricao: req.query.descricao, criador: getPeticao.criador, qtd_assinaturas: getPeticao.qtd_assinaturas}
+
+        const peticao = await PeticoesModel.updatePeticao(req.query._id, peticaoUpdate);
 
         if (!peticao) {
-          res.status(404).json(`Não existe Peticao cadastrado.`);
+          res.status(404).json(`Não existe Peticao cadastrada.`);
           return;
         }
 
@@ -156,7 +161,7 @@ module.exports = class Peticoes {
     let localStorage = new LocalStorage('./scratch');
     let userStorage = JSON.parse(localStorage.getItem('userAuth'));
 
-    if (userStorage.token !== undefined && userStorage.token !== '') {
+    if (userStorage !== null && userStorage.token !== undefined && userStorage.token !== '') {
       req.session.logado = true;
       req.session.token = userStorage.token;
     }
@@ -184,12 +189,15 @@ module.exports = class Peticoes {
   }
 
   static async addPeticao(req, res, next) {
+
     let localStorage = new LocalStorage('./scratch');
     let userStorage = JSON.parse(localStorage.getItem('userAuth'));
 
     if (userStorage.token !== undefined && userStorage.token !== '') {
       req.session.logado = true;
       req.session.token = userStorage.token;
+      req.query.criador = userStorage.username;
+      req.query.qtd_assinaturas = 0;
     }
 
     if (!req.session.logado) return res.status(500).json({
